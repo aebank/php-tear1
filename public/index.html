@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-	<title>Sheduler</title>
+	<title>Scheduler</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="description" content="Test project for PHP backend contenders. Tier one" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -52,14 +52,10 @@
 				e.preventDefault();
 				renderApiResult($(this), $("#calendar"));
 			});
-		});
-		$(document).ready(function () {
 			$("#addForm").submit(function(e) {
 				e.preventDefault();
 				renderApiResult($(this), $("#message"));
 			});
-		});
-		$(document).ready(function () {
 			$("#registerForm").submit(function(e) {
 				e.preventDefault();
 				renderApiResult($(this), $("#message"));

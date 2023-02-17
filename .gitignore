@@ -1,0 +1,7 @@
+.htaccess
+log/**
+*.log
+vendor/
+.phpunit.result.cache
+.phpdoc/
+docs/

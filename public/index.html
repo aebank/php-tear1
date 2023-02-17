@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Sheduler</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="description" content="Test project for PHP backend contenders. Tier one" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+	<div id="header">
+		<h1>Scheduler example frontend view</h1>
+	</div>
+	<div id="contol">
+		<form id="registerForm" action="api/register.php">
+			Name: <input name="name" type="text" />
+			<input type="submit" value="Register permanently" />
+		</form>
+		<br />
+		<form id="addForm" action="api/add.php">
+			Date: <input name="date" type="text" />
+			Time: <input name="time" type="text" />
+			Duration: <input name="duration" type="text" />
+			Name: <input name="name" type="text" />
+			<input type="submit" value="Add an appointment" />
+		</form>
+		<br />
+	</div>
+	<div id="filter">
+		<form id="filterForm" action="api/schedule.php">
+			From: <input name="from" type="text" />
+			To:  <input name="to" type="text" />
+			Name: <input name="name" type="text" />
+			<input type="submit" value="Apply filter" />
+		</form>
+	</div>
+	<br />
+	<div id="message"></div>
+	<div id="calendar"></div>
+	<script>
+		function renderApiResult(form, element) {					
+			$.ajax({
+				type: "POST",
+				url: form.attr("action"),
+				data: form.serialize(),
+				success: function(data)	{
+					element.html(data);
+				}
+			});
+		}
+		$(document).ready(function () {
+			$("#filterForm").submit(function(e) {
+				e.preventDefault();
+				renderApiResult($(this), $("#calendar"));
+			});
+		});
+		$(document).ready(function () {
+			$("#addForm").submit(function(e) {
+				e.preventDefault();
+				renderApiResult($(this), $("#message"));
+			});
+		});
+		$(document).ready(function () {
+			$("#registerForm").submit(function(e) {
+				e.preventDefault();
+				renderApiResult($(this), $("#message"));
+			});
+		});
+		renderApiResult($("#filterForm"), $("#calendar"));
+	</script>
+</body>
+</html>

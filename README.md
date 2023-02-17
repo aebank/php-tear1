@@ -31,7 +31,7 @@ from project root.
 Work can be tested with `phpunit` framework included in project dependencies. Default test runs just by executing 
 
 ```
-./vendor/bin/phpunit
+$ ./vendor/bin/phpunit
 ```
 from project root
 
